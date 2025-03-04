@@ -1,4 +1,4 @@
-namespace HSE_Lab_10
+namespace Library10
 {
     
     internal class Instrument

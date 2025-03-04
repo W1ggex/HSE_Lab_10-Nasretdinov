@@ -1,4 +1,4 @@
- namespace HSE_Lab_10
+ namespace Library10
  {
  
     internal class Guitar : Instrument
@@ -11,7 +11,7 @@
             get => stringCount;
             set
             {
-                if(value <= 4 || value > 6)
+                if(value < 4 || value > 6)
                     throw new ArgumentException("String count must be between 4 and 6");
                 stringCount = value;
             }

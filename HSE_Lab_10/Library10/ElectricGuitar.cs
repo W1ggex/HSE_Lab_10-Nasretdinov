@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace HSE_Lab_10
+namespace Library10
 {
 
     internal class ElectricGuitar : Instrument
@@ -8,6 +8,7 @@ namespace HSE_Lab_10
         private string powerSupply;
         private string[] powerSupplies = { "Batteries", "Accumulator", "Fixed power source", "USB" };
         private string[] names = {"Les Paul", "Slash", "Adam Jones", "ES-335", "SG", "Flying V"};
+        private int stringCount;
         
             
         public string PowerSupply
@@ -21,13 +22,25 @@ namespace HSE_Lab_10
                     }
                 }
         
+        public int StringCount
+        {
+            get => stringCount;
+            set
+            {
+                if(value < 4 || value > 6)
+                    throw new ArgumentException("String count must be between 4 and 6");
+                stringCount = value;
+            }
+        }
+        
         //конструкторы
         public ElectricGuitar(){}
         
-        public ElectricGuitar(string name, string powerSupply) : base(name)
+        public ElectricGuitar(string name, string powerSupply, int stringCount) : base(name)
         {
             this.name = name;
             this.powerSupply = powerSupply;
+            this.stringCount = stringCount;
         }
         
         //методы
@@ -47,11 +60,13 @@ namespace HSE_Lab_10
         {
             Name = "Gibson " + names[new Random().Next(0, names.Length)];
             PowerSupply = powerSupplies[new Random().Next(0, powerSupplies.Length)];
+            StringCount = new Random().Next(4, 7);
+            
         }
         
         public override bool Equals(object? obj)
         {
-            return obj is ElectricGuitar other && base.Equals(other) && PowerSupply == other.PowerSupply;
+            return obj is ElectricGuitar other && base.Equals(other) && PowerSupply == other.PowerSupply && StringCount == other.StringCount;
         }
     }
 }
