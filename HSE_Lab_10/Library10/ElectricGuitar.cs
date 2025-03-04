@@ -44,9 +44,9 @@ namespace Library10
         }
         
         //методы
-        public void Show()
+        public override void Show()
         {
-            Console.WriteLine($"The E-Giutar is called {Name}, it is powered by a(n) {PowerSupply}");    
+            Console.WriteLine($"The E-Giutar is called {Name}, it is powered by a(n) {PowerSupply} and has {StringCount} strings");    
         }
         
         public override void Init()

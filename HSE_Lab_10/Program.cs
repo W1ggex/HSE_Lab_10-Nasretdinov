@@ -5,6 +5,32 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        Instrument[] instruments = new Instrument[20];
+        var rnd = new Random();
+        for (int i = 0; i < instruments.Length; i++)
+        {
+            int choice = rnd.Next(0, 3);
+            if(choice == 0)
+                instruments[i] = new Guitar();
+            else if(choice == 1)
+                instruments[i] = new ElectricGuitar();
+            else
+                instruments[i] = new Fortepiano();   
+            
+            instruments[i].RandomInit();
+        }
+        
+        Console.WriteLine("Default:");
+        foreach (var instrument in instruments)
+            Console.WriteLine(instrument.Name);
+
+        Console.WriteLine("\nVirtual:");
+        foreach (var instrument in instruments)
+            instrument.Show();
+        
+        Console.WriteLine($"Average Guitar has {AverageGuitarStringNumber(instruments).ToString("F2")} strings");
+        Console.WriteLine($"All fixed PS E-Guitars have {FixedPSEGuitarStringNumber(instruments)} strings combined");
+        Console.WriteLine($"Octavian Fortepiano has a maximum of {MaxKeyNumberOfOctavianFortepiano(instruments)} keys");
         
     }
 

@@ -41,7 +41,7 @@ namespace Library10
         }
         
         //методы
-        public void Show()
+        public override void Show()
         {
             Console.WriteLine($"The Fortepiano is called {Name}, it has {KeyNumber} keys in the {keyLayout} layout.");    
         }
