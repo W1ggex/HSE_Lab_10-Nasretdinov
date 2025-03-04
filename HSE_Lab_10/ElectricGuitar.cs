@@ -5,22 +5,14 @@ namespace HSE_Lab_10
 
     internal class ElectricGuitar : Instrument
     {
-        private string name;
         private string powerSupply;
         private string[] powerSupplies = { "Batteries", "Accumulator", "Fixed power source", "USB" };
-
-        public string Name
-            {
-                get
-                {return name;}
-                set
-                {name = value;}
-            }
+        private string[] names = {"Les Paul", "Slash", "Adam Jones", "ES-335", "SG", "Flying V"};
+        
             
         public string PowerSupply
                 {
-                    get
-                    {return powerSupply;}
+                    get => powerSupply;
                     set
                     {
                         if(!powerSupplies.Contains(value))
@@ -28,13 +20,9 @@ namespace HSE_Lab_10
                         powerSupply = value;
                     }
                 }
-        public ElectricGuitar():base(){}
         
-        public ElectricGuitar(int sth)
-        {
-            this.name = "Gibson SG Standard";
-            this.powerSupply = powerSupplies[2];
-        }
+        //конструкторы
+        public ElectricGuitar(){}
         
         public ElectricGuitar(string name, string powerSupply) : base(name)
         {
@@ -42,9 +30,28 @@ namespace HSE_Lab_10
             this.powerSupply = powerSupply;
         }
         
+        //методы
         public void Show()
         {
-            Console.WriteLine($"The E-giutar is called {Name}, it is powered by a(n) {PowerSupply}");    
+            Console.WriteLine($"The E-Giutar is called {Name}, it is powered by a(n) {PowerSupply}");    
+        }
+        
+        public override void Init()
+        {
+            base.Init();
+            Console.Write("Enter the E-Guitar power supply: ");
+            PowerSupply = Console.ReadLine();
+        }
+        
+        public override void RandomInit()
+        {
+            Name = "Gibson " + names[new Random().Next(0, names.Length)];
+            PowerSupply = powerSupplies[new Random().Next(0, powerSupplies.Length)];
+        }
+        
+        public override bool Equals(object? obj)
+        {
+            return obj is ElectricGuitar other && base.Equals(other) && PowerSupply == other.PowerSupply;
         }
     }
 }
