@@ -3,7 +3,7 @@ namespace HSE_Lab_10;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         Instrument[] instruments = new Instrument[20];
         var rnd = new Random();
@@ -28,7 +28,7 @@ internal class Program
         foreach (var instrument in instruments)
             instrument.Show();
         
-        Console.WriteLine($"Average Guitar has {AverageGuitarStringNumber(instruments).ToString("F2")} strings");
+        Console.WriteLine($"\nAverage Guitar has {AverageGuitarStringNumber(instruments).ToString("F2")} strings");
         Console.WriteLine($"All fixed PS E-Guitars have {FixedPSEGuitarStringNumber(instruments)} strings combined");
         Console.WriteLine($"Octavian Fortepiano has a maximum of {MaxKeyNumberOfOctavianFortepiano(instruments)} keys");
         

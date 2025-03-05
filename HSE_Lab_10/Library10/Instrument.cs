@@ -1,7 +1,7 @@
 namespace Library10
 {
     
-    internal class Instrument
+    internal class Instrument// : IInit, IComparable<Instrument>
     {
         protected string[] names =
             { "Harmonica", "Sax", "Violin", "Cello", "Trumpet", "Flute", "Accordion", "Trombone", "Harp", "Bassoon" };
