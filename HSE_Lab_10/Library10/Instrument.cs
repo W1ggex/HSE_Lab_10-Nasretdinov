@@ -26,9 +26,9 @@ namespace Library10
         }
         
         //методы
-        public virtual void Show()
+        public virtual string Show()
         {
-            Console.WriteLine($"The instrument is called {Name}");
+            return $"The instrument is called {Name}";
         }
         
         public virtual void Init()

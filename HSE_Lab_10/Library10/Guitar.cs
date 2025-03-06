@@ -27,9 +27,9 @@
         }
         
         //методы
-        public override void Show()  //string
+        public override string Show()  //string
         {
-            Console.WriteLine($"The Guitar is called {Name}, it has {StringCount} strings");    
+            return $"The Guitar is called {Name}, it has {StringCount} strings";    
         }
         
         public override void Init()

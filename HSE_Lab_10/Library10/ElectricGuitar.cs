@@ -3,12 +3,12 @@ using System.Linq;
 namespace Library10
 {
 
-    internal class ElectricGuitar : Instrument
+    internal class ElectricGuitar : Guitar
     {
         private string powerSupply;
         private string[] powerSupplies = { "Batteries", "Accumulator", "Fixed power source", "USB" };
         private string[] names = {"Les Paul", "Slash", "Adam Jones", "ES-335", "SG", "Flying V"};
-        private int stringCount;
+        //private int stringCount;
         
             
         public string PowerSupply
@@ -22,31 +22,18 @@ namespace Library10
                     }
                 }
         
-        public int StringCount
-        {
-            get => stringCount;
-            set
-            {
-                if(value < 4 || value > 6)
-                    throw new ArgumentException("String count must be between 4 and 6");
-                stringCount = value;
-            }
-        }
-        
         //конструкторы
         public ElectricGuitar(){}
         
-        public ElectricGuitar(string name, string powerSupply, int stringCount) : base(name)
+        public ElectricGuitar(string name, string powerSupply, int stringCount) : base(name, stringCount)
         {
-            this.name = name;
             this.powerSupply = powerSupply;
-            this.stringCount = stringCount;
         }
         
         //методы
-        public override void Show()
+        public override string Show()
         {
-            Console.WriteLine($"The E-Giutar is called {Name}, it is powered by a(n) {PowerSupply} and has {StringCount} strings");    
+            return $"The E-Giutar is called {Name}, it is powered by a(n) {PowerSupply} and has {StringCount} strings";    
         }
         
         public override void Init()
@@ -66,7 +53,7 @@ namespace Library10
         
         public override bool Equals(object? obj)
         {
-            return obj is ElectricGuitar other && base.Equals(other) && PowerSupply == other.PowerSupply && StringCount == other.StringCount;
+            return obj is ElectricGuitar other && base.Equals(other) && PowerSupply == other.PowerSupply;
         }
     }
 }

@@ -9,13 +9,15 @@ internal class Program
         var rnd = new Random();
         for (int i = 0; i < instruments.Length; i++)
         {
-            int choice = rnd.Next(0, 3);   //add base Instrument objects
+            int choice = rnd.Next(0, 4);   
             if(choice == 0)
                 instruments[i] = new Guitar();
             else if(choice == 1)
                 instruments[i] = new ElectricGuitar();
+            else if(choice == 2)
+                instruments[i] = new Fortepiano();
             else
-                instruments[i] = new Fortepiano();   
+                instruments[i] = new Instrument();   
             
             instruments[i].RandomInit();
         }
@@ -26,7 +28,7 @@ internal class Program
 
         Console.WriteLine("\nVirtual:");
         foreach (var instrument in instruments)
-            instrument.Show();
+            Console.WriteLine(instrument.Show());
         
         Console.WriteLine($"\nAverage Guitar has {AverageGuitarStringNumber(instruments).ToString("F2")} strings");
         Console.WriteLine($"All fixed PS E-Guitars have {FixedPSEGuitarStringNumber(instruments)} strings combined");
@@ -52,9 +54,11 @@ internal class Program
                 average += electricGuitar.StringCount;
             }
         }
-        if(count > 0)
-            return average / count;  //leave 1 return only
-        return 0;
+            if(count > 0)
+                average /= count;
+            else
+                average = 0;
+            return average;
     }
 
     public static int FixedPSEGuitarStringNumber(Instrument[] instruments)
@@ -62,9 +66,9 @@ internal class Program
         int count = 0;
         foreach (var instrument in instruments)
         {
-            ElectricGuitar electricGuitar = instrument as ElectricGuitar;
+            ElectricGuitar electricGuitar = (instrument as ElectricGuitar)!;
             if (electricGuitar !=null)
-                if(electricGuitar.PowerSupply == "Fixed Power Supply")
+                if(electricGuitar.PowerSupply == "Fixed power source")
                     count += electricGuitar.StringCount;
         }
         return count;

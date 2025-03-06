@@ -35,15 +35,14 @@ namespace Library10
         
         public Fortepiano(string name, string keyLayout, int keyNumber) : base(name)
         {
-            this.name = name;
             this.keyLayout = keyLayout;
             this.keyNumber = keyNumber;
         }
         
         //методы
-        public override void Show()
+        public override string Show()
         {
-            Console.WriteLine($"The Fortepiano is called {Name}, it has {KeyNumber} keys in the {keyLayout} layout.");    
+            return $"The Fortepiano is called {Name}, it has {KeyNumber} keys in the {keyLayout} layout.";    
         }
         
         public override void Init()
