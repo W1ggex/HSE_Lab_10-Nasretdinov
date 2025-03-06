@@ -1,7 +1,7 @@
 namespace Library10
 {
     
-    internal class Instrument// : IInit, IComparable<Instrument>
+    public class Instrument// : IInit, IComparable<Instrument>
     {
         protected string[] names =
             { "Harmonica", "Sax", "Violin", "Cello", "Trumpet", "Flute", "Accordion", "Trombone", "Harp", "Bassoon" };
@@ -15,11 +15,14 @@ namespace Library10
          }       
         
         //конструкторы
-        public Instrument(){}
+        public Instrument()
+        {
+            //Name = "Red";
+        }
         
         public Instrument(string name)
         {
-            this.name = name;
+            this.Name = name;
         }
         
         //методы

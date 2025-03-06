@@ -58,7 +58,6 @@
             }
 
             //методы
-            
             public void Init()
             {
                 Console.Write("Enter the students's name: ");

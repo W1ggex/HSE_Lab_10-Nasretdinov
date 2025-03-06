@@ -9,7 +9,7 @@ internal class Program
         var rnd = new Random();
         for (int i = 0; i < instruments.Length; i++)
         {
-            int choice = rnd.Next(0, 3);
+            int choice = rnd.Next(0, 3);   //add base Instrument objects
             if(choice == 0)
                 instruments[i] = new Guitar();
             else if(choice == 1)
@@ -53,7 +53,7 @@ internal class Program
             }
         }
         if(count > 0)
-            return average / count;
+            return average / count;  //leave 1 return only
         return 0;
     }
 
@@ -63,8 +63,9 @@ internal class Program
         foreach (var instrument in instruments)
         {
             ElectricGuitar electricGuitar = instrument as ElectricGuitar;
-            if (electricGuitar !=null)    
-                count += electricGuitar.StringCount;
+            if (electricGuitar !=null)
+                if(electricGuitar.PowerSupply == "Fixed Power Supply")
+                    count += electricGuitar.StringCount;
         }
         return count;
     }
@@ -78,7 +79,8 @@ internal class Program
             {
                 Fortepiano fortepiano = (Fortepiano)instrument;
                 if(fortepiano.KeyNumber > max)
-                    max = fortepiano.KeyNumber;
+                    if(fortepiano.KeyLayout == "Octavian")
+                        max = fortepiano.KeyNumber;
             }
         }
         return max;
